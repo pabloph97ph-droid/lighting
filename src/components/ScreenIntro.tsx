@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import { motion } from 'motion/react';
 import { LightCore } from './LightCore';
 import { ArrowRight, Globe, Sparkles } from 'lucide-react';
@@ -9,6 +9,7 @@ interface ScreenIntroProps {
 
 export const ScreenIntro: React.FC<ScreenIntroProps> = ({ onStart }) => {
   const [isExpanding, setIsExpanding] = useState(false);
+  const orbAnchorRef = useRef<HTMLDivElement | null>(null);
 
   const handleClickStart = () => {
     if (isExpanding) return;
@@ -24,13 +25,16 @@ export const ScreenIntro: React.FC<ScreenIntroProps> = ({ onStart }) => {
       id="screen-intro"
       className="min-h-screen w-full flex flex-col justify-between items-center px-6 py-10 relative overflow-hidden bg-[#07060A] text-[#F5F3FA]"
     >
+      {/* Full-Screen Borderless Light Core Canvas System (covers entire screen, no clipping boxes) */}
+      <LightCore isExpanding={isExpanding} anchorRef={orbAnchorRef} />
+
       {/* Ambient background deep violet aurora & liquid aura */}
-      <div className="absolute inset-0 pointer-events-none opacity-60">
-        <div className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[650px] h-[650px] rounded-full bg-gradient-to-tr from-[#581C87]/40 via-[#7C3AED]/25 to-transparent blur-[110px]" />
-        <div className="absolute bottom-10 left-1/4 w-[400px] h-[350px] rounded-full bg-[#3B0764]/30 blur-[90px]" />
+      <div className="absolute inset-0 pointer-events-none opacity-50 z-0">
+        <div className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[700px] rounded-full bg-gradient-to-tr from-[#581C87]/30 via-[#7C3AED]/20 to-transparent blur-[120px]" />
+        <div className="absolute bottom-10 left-1/4 w-[450px] h-[400px] rounded-full bg-[#3B0764]/25 blur-[100px]" />
         {/* Subtle grid pattern overlay with purple tint */}
         <div
-          className="absolute inset-0 opacity-[0.04]"
+          className="absolute inset-0 opacity-[0.03]"
           style={{
             backgroundImage:
               'radial-gradient(#A855F7 1px, transparent 1px), radial-gradient(#A855F7 1px, #07060A 1px)',
@@ -55,14 +59,18 @@ export const ScreenIntro: React.FC<ScreenIntroProps> = ({ onStart }) => {
 
       {/* Centerpiece: Light Core & Compact 3D Liquid JUMPER Identity */}
       <div className="z-10 flex flex-col items-center justify-center my-auto w-full max-w-xl text-center">
-        {/* Core of Violet Light */}
+        {/* Optical Anchor where the luminous core orb sits (while atmospheric light and particles span the entire viewport) */}
         <motion.div
           initial={{ opacity: 0, scale: 0.88 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 1.1, ease: 'easeOut' }}
-          className="relative flex items-center justify-center -my-3"
+          className="relative flex items-center justify-center -my-2"
         >
-          <LightCore isExpanding={isExpanding} size={280} />
+          <div
+            ref={orbAnchorRef}
+            className="w-28 h-28 sm:w-32 sm:h-32 flex items-center justify-center pointer-events-none select-none"
+            aria-hidden="true"
+          />
         </motion.div>
 
         {/* Brand Name: JUMPER — Compact, sculptural 3D liquid chrome-purple lettering */}
