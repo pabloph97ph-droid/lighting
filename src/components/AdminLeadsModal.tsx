@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { X, Download, RefreshCw, Flame, Clock, Compass, Shield, Code, Check } from 'lucide-react';
 import { LeadRecord } from '../types';
 import { fetchLeads } from '../services/leadService';
+import { JumperMonogram } from './JumperMonogram';
 
 interface AdminLeadsModalProps {
   isOpen: boolean;
@@ -81,13 +82,13 @@ export const AdminLeadsModal: React.FC<AdminLeadsModalProps> = ({ isOpen, onClos
     const url = URL.createObjectURL(blob);
     const link = document.createElement('a');
     link.setAttribute('href', url);
-    link.setAttribute('download', `leads_lightning_${new Date().toISOString().slice(0, 10)}.csv`);
+    link.setAttribute('download', `leads_jumper_${new Date().toISOString().slice(0, 10)}.csv`);
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
   };
 
-  const sampleAppsScriptCode = `// Google Apps Script para receber Leads da LIGHTNING em Google Sheets
+  const sampleAppsScriptCode = `// Google Apps Script para receber Leads da JUMPER em Google Sheets
 // 1. Abra sua planilha Google
 // 2. Acesse Extensões > Apps Script
 // 3. Cole o código abaixo e clique em Implantar > Nova Implantação (Web App)
@@ -143,39 +144,39 @@ function doPost(e) {
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-sm p-4 animate-in fade-in duration-200">
-      <div className="bg-[#FAF9F6] w-full max-w-4xl max-h-[90vh] rounded-2xl border border-[#DDD5C5] shadow-2xl flex flex-col overflow-hidden text-[#111318]">
+    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-md p-4 animate-in fade-in duration-200">
+      <div className="bg-[#0B0914] w-full max-w-4xl max-h-[90vh] rounded-2xl border border-[#2B2142] shadow-2xl shadow-[#7C3AED]/20 flex flex-col overflow-hidden text-[#F5F3FA]">
         {/* Header */}
-        <div className="px-6 py-4 border-b border-[#EAE3D5] flex items-center justify-between bg-[#F5F1E8]">
-          <div className="flex items-center space-x-2.5">
-            <Shield className="w-5 h-5 text-[#8F7226]" />
+        <div className="px-6 py-4 border-b border-[#211A34] flex items-center justify-between bg-[#110D20]">
+          <div className="flex items-center space-x-3">
+            <JumperMonogram size={26} />
             <div>
-              <h3 className="font-['Cinzel',serif] text-sm font-bold tracking-wider uppercase text-[#111318]">
-                LIGHTNING Command & Lead Intelligence
+              <h3 className="font-['Syne',sans-serif] text-sm font-bold tracking-wider uppercase text-white">
+                JUMPER Intelligence & Lead Command
               </h3>
-              <p className="text-[11px] text-[#706B63]">
-                Armazenamento de Leads, Scoring Interno e Integrações
+              <p className="text-[11px] text-[#9E94B3]">
+                Armazenamento de Leads, Scoring e Rastreamento de Conversão
               </p>
             </div>
           </div>
           <button
             onClick={onClose}
-            className="p-1.5 rounded-lg hover:bg-[#EAE4D7] text-[#706B63] hover:text-[#111318] transition-colors"
+            className="p-1.5 rounded-lg hover:bg-[#1E1734] text-[#9E94B3] hover:text-white transition-colors"
           >
             <X className="w-5 h-5" />
           </button>
         </div>
 
         {/* Action Bar */}
-        <div className="px-6 py-3 bg-[#F8F5EE] border-b border-[#EAE3D5] flex flex-wrap items-center justify-between gap-3 text-xs">
+        <div className="px-6 py-3 bg-[#130F24] border-b border-[#211A34] flex flex-wrap items-center justify-between gap-3 text-xs">
           <div className="flex items-center space-x-2">
-            <span className="font-semibold text-[#111318]">
+            <span className="font-semibold text-white">
               {leads.length} {leads.length === 1 ? 'avaliação registrada' : 'avaliações registradas'}
             </span>
             <button
               onClick={loadLeads}
               disabled={loading}
-              className="p-1 text-[#706B63] hover:text-[#111318] transition-colors"
+              className="p-1 text-[#9E94B3] hover:text-white transition-colors"
               title="Recarregar dados"
             >
               <RefreshCw className={`w-3.5 h-3.5 ${loading ? 'animate-spin' : ''}`} />
@@ -185,18 +186,18 @@ function doPost(e) {
           <div className="flex items-center space-x-2">
             <button
               onClick={() => setShowCode(!showCode)}
-              className="inline-flex items-center space-x-1.5 px-3 py-1.5 rounded-lg border border-[#D9D1C1] bg-white hover:bg-[#F2ECE0] text-[#3D3830] transition-colors"
+              className="inline-flex items-center space-x-1.5 px-3 py-1.5 rounded-lg border border-[#342852] bg-[#1A142E] hover:bg-[#231A3D] text-[#DDD6EA] transition-colors"
             >
-              <Code className="w-3.5 h-3.5 text-[#8F7226]" />
-              <span>{showCode ? 'Ocultar Código Apps Script' : 'Google Apps Script (Webhook)'}</span>
+              <Code className="w-3.5 h-3.5 text-[#C084FC]" />
+              <span>{showCode ? 'Ocultar Script' : 'Google Apps Script (Webhook)'}</span>
             </button>
 
             <button
               onClick={exportCSV}
               disabled={leads.length === 0}
-              className="inline-flex items-center space-x-1.5 px-3 py-1.5 rounded-lg border border-[#3B3F4A] bg-[#111318] text-white hover:bg-[#222630] transition-colors disabled:opacity-50"
+              className="inline-flex items-center space-x-1.5 px-3 py-1.5 rounded-lg border border-[#A78BFA]/30 bg-gradient-to-r from-[#6D28D9] to-[#8B5CF6] text-white hover:brightness-110 transition-all disabled:opacity-50 shadow-sm"
             >
-              <Download className="w-3.5 h-3.5 text-[#E0C38A]" />
+              <Download className="w-3.5 h-3.5 text-white" />
               <span>Exportar CSV</span>
             </button>
           </div>
@@ -204,20 +205,20 @@ function doPost(e) {
 
         {/* Apps Script Guide Drawer */}
         {showCode && (
-          <div className="px-6 py-4 bg-[#F2EDE2] border-b border-[#EAE3D5] text-xs space-y-2 max-h-60 overflow-y-auto">
+          <div className="px-6 py-4 bg-[#140F26] border-b border-[#211A34] text-xs space-y-2 max-h-60 overflow-y-auto">
             <div className="flex justify-between items-center">
-              <span className="font-semibold text-[#111318] uppercase tracking-wider text-[11px]">
+              <span className="font-semibold text-[#C084FC] uppercase tracking-wider text-[11px]">
                 Script para Google Sheets (Webhook Web App)
               </span>
               <button
                 onClick={copyAppsScript}
-                className="inline-flex items-center space-x-1 text-[11px] font-medium text-[#8F7226] hover:underline"
+                className="inline-flex items-center space-x-1 text-[11px] font-medium text-[#C084FC] hover:underline"
               >
-                {copiedCode ? <Check className="w-3.5 h-3.5 text-green-600" /> : <Code className="w-3.5 h-3.5" />}
+                {copiedCode ? <Check className="w-3.5 h-3.5 text-green-400" /> : <Code className="w-3.5 h-3.5" />}
                 <span>{copiedCode ? 'Copiado!' : 'Copiar Código'}</span>
               </button>
             </div>
-            <pre className="p-3 bg-white border border-[#DDD5C5] rounded-lg font-mono text-[11px] text-[#22242A] overflow-x-auto whitespace-pre">
+            <pre className="p-3 bg-[#0A0812] border border-[#2B2140] rounded-lg font-mono text-[11px] text-[#D8B4FE] overflow-x-auto whitespace-pre">
               {sampleAppsScriptCode}
             </pre>
           </div>
@@ -226,10 +227,10 @@ function doPost(e) {
         {/* Content: Leads Table / Cards */}
         <div className="p-6 overflow-y-auto flex-1 space-y-4">
           {leads.length === 0 ? (
-            <div className="text-center py-12 text-[#8C847A] space-y-2">
-              <Compass className="w-10 h-10 mx-auto opacity-40 text-[#8F7226]" />
-              <p className="text-sm font-medium">Nenhum lead registrado ainda.</p>
-              <p className="text-xs max-w-sm mx-auto">
+            <div className="text-center py-12 text-[#7E7495] space-y-2">
+              <Compass className="w-10 h-10 mx-auto opacity-40 text-[#C084FC]" />
+              <p className="text-sm font-medium text-[#B4AAC7]">Nenhum lead registrado ainda.</p>
+              <p className="text-xs max-w-sm mx-auto text-[#7E7495]">
                 Assim que os usuários concluírem as avaliações no app, os dados e scores HOT, WARM ou NURTURE aparecerão aqui automaticamente.
               </p>
             </div>
@@ -237,27 +238,27 @@ function doPost(e) {
             <div className="space-y-3">
               {leads.map((lead) => {
                 const scoreColors = {
-                  HOT: 'bg-red-50 text-red-700 border-red-200',
-                  WARM: 'bg-amber-50 text-amber-800 border-amber-200',
-                  NURTURE: 'bg-blue-50 text-blue-700 border-blue-200',
+                  HOT: 'bg-red-950/60 text-red-300 border-red-800/60',
+                  WARM: 'bg-amber-950/60 text-amber-300 border-amber-800/60',
+                  NURTURE: 'bg-purple-950/60 text-purple-300 border-purple-800/60',
                 };
                 const scoreIcons = {
-                  HOT: <Flame className="w-3.5 h-3.5 text-red-600" />,
-                  WARM: <Clock className="w-3.5 h-3.5 text-amber-600" />,
-                  NURTURE: <Compass className="w-3.5 h-3.5 text-blue-600" />,
+                  HOT: <Flame className="w-3.5 h-3.5 text-red-400" />,
+                  WARM: <Clock className="w-3.5 h-3.5 text-amber-400" />,
+                  NURTURE: <Compass className="w-3.5 h-3.5 text-purple-400" />,
                 };
 
                 return (
                   <div
                     key={lead.id}
-                    className="p-4 rounded-xl border border-[#E3DBCB] bg-white shadow-xs space-y-3"
+                    className="p-4 rounded-xl border border-[#251E38] bg-[#110E1F] shadow-xs space-y-3"
                   >
-                    <div className="flex flex-wrap items-center justify-between gap-2 border-b border-[#F0EBE0] pb-2.5">
+                    <div className="flex flex-wrap items-center justify-between gap-2 border-b border-[#1E1732] pb-2.5">
                       <div className="flex items-center space-x-3">
-                        <span className="font-semibold text-[#111318] text-base">{lead.nome}</span>
-                        <span className="text-xs text-[#706B63]">{lead.email}</span>
+                        <span className="font-semibold text-white text-base">{lead.nome}</span>
+                        <span className="text-xs text-[#9E94B3]">{lead.email}</span>
                         {lead.instagram && (
-                          <span className="text-xs font-mono text-[#8C7436] bg-[#F7F3EB] px-2 py-0.5 rounded">
+                          <span className="text-xs font-mono text-[#C084FC] bg-[#1C1433] px-2 py-0.5 rounded border border-[#342454]">
                             {lead.instagram}
                           </span>
                         )}
@@ -266,44 +267,44 @@ function doPost(e) {
                       <div className="flex items-center space-x-2">
                         <span
                           className={`inline-flex items-center space-x-1 text-[11px] font-bold px-2.5 py-1 rounded-full border ${
-                            scoreColors[lead.leadScore] || 'bg-gray-50 text-gray-700 border-gray-200'
+                            scoreColors[lead.leadScore] || 'bg-gray-900 text-gray-300 border-gray-700'
                           }`}
                         >
                           {scoreIcons[lead.leadScore]}
                           <span>{lead.leadScore}</span>
                         </span>
-                        <span className="text-[11px] text-[#9E978C] font-mono">
+                        <span className="text-[11px] text-[#7E7495] font-mono">
                           {new Date(lead.timestamp).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
                         </span>
                       </div>
                     </div>
 
-                    <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 text-xs text-[#524C44]">
+                    <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 text-xs text-[#B4AAC7]">
                       <div>
-                        <span className="text-[10px] uppercase text-[#9E978C] block">Objetivo</span>
-                        <span className="font-medium text-[#111318]">{lead.objetivo}</span>
+                        <span className="text-[10px] uppercase text-[#7E7495] block">Objetivo</span>
+                        <span className="font-medium text-white">{lead.objetivo}</span>
                       </div>
                       <div>
-                        <span className="text-[10px] uppercase text-[#9E978C] block">Nível</span>
-                        <span className="font-medium text-[#111318]">{lead.nivelPercebido}</span>
+                        <span className="text-[10px] uppercase text-[#7E7495] block">Nível</span>
+                        <span className="font-medium text-white">{lead.nivelPercebido}</span>
                       </div>
                       <div>
-                        <span className="text-[10px] uppercase text-[#9E978C] block">Prazo & Dedicação</span>
-                        <span className="font-medium text-[#111318]">
+                        <span className="text-[10px] uppercase text-[#7E7495] block">Prazo & Dedicação</span>
+                        <span className="font-medium text-white">
                           {lead.prazoDesejado} • {lead.tempoDiario}
                         </span>
                       </div>
                       <div>
-                        <span className="text-[10px] uppercase text-[#9E978C] block">Carreira & Área</span>
-                        <span className="font-medium text-[#111318]">
+                        <span className="text-[10px] uppercase text-[#7E7495] block">Carreira & Área</span>
+                        <span className="font-medium text-white">
                           {lead.situacaoProfissional} ({lead.areaAtuacao || 'Geral'})
                         </span>
                       </div>
                     </div>
 
                     {lead.transformacaoDesejada && (
-                      <div className="p-2.5 rounded-lg bg-[#FAF8F3] border border-[#EAE3D3] text-xs text-[#3D3830]">
-                        <span className="font-semibold text-[#8F7226] block text-[10px] uppercase tracking-wider mb-0.5">
+                      <div className="p-2.5 rounded-lg bg-[#140F24] border border-[#271D3E] text-xs text-[#DDD6EA]">
+                        <span className="font-semibold text-[#C084FC] block text-[10px] uppercase tracking-wider mb-0.5">
                           Transformação Desejada:
                         </span>
                         {lead.transformacaoDesejada}
@@ -312,7 +313,7 @@ function doPost(e) {
 
                     {/* Attribution / UTMs */}
                     {(lead.utmSource || lead.utmCampaign || lead.ref) && (
-                      <div className="text-[10px] font-mono text-[#8C847A] flex flex-wrap gap-2 pt-1 border-t border-[#F5F0E6]">
+                      <div className="text-[10px] font-mono text-[#7E7495] flex flex-wrap gap-2 pt-1 border-t border-[#1C1630]">
                         {lead.utmSource && <span>utm_source: {lead.utmSource}</span>}
                         {lead.utmMedium && <span>utm_medium: {lead.utmMedium}</span>}
                         {lead.utmCampaign && <span>utm_campaign: {lead.utmCampaign}</span>}

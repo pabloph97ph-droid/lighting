@@ -87,7 +87,7 @@ export default function App() {
   };
 
   return (
-    <div className="min-h-screen flex flex-col bg-[#FAF9F6] text-[#111318] selection:bg-[#EBDDBE] selection:text-[#111318]">
+    <div className="min-h-screen flex flex-col bg-[#07060A] text-[#F5F3FA] selection:bg-[#7C3AED] selection:text-white">
       {/* Header bar */}
       <Header
         currentStepIndex={questionNumber}

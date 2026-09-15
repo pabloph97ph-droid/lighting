@@ -150,13 +150,13 @@ export const QuestionCard: React.FC<QuestionCardProps> = ({
           {questionNumber === 1 && (
             <div className="space-y-6">
               <div className="space-y-2">
-                <span className="text-[11px] uppercase tracking-[0.24em] font-semibold text-[#8C7436]">
+                <span className="text-[11px] uppercase tracking-[0.24em] font-semibold text-[#C084FC]">
                   Apresentação
                 </span>
-                <h3 className="font-['Cormorant_Garamond',serif] text-3xl sm:text-4xl md:text-5xl font-semibold tracking-tight text-[#111318]">
+                <h3 className="font-['Cormorant_Garamond',serif] text-3xl sm:text-4xl md:text-5xl font-semibold tracking-tight text-white">
                   Qual é o seu nome?
                 </h3>
-                <p className="text-sm text-[#706B63] font-['Plus_Jakarta_Sans',sans-serif]">
+                <p className="text-sm text-[#9E94B3] font-['Plus_Jakarta_Sans',sans-serif]">
                   Como gostaria de ser chamado durante a sua avaliação institucional.
                 </p>
               </div>
@@ -171,7 +171,7 @@ export const QuestionCard: React.FC<QuestionCardProps> = ({
                   onKeyDown={handleKeyDown}
                   placeholder="Digite seu primeiro nome"
                   autoComplete="given-name"
-                  className="w-full text-xl sm:text-2xl py-4 px-5 bg-white border border-[#DDD5C5] rounded-xl text-[#111318] placeholder-[#9E978C] focus:outline-none focus:border-[#C5A059] focus:ring-2 focus:ring-[#C5A059]/20 shadow-sm transition-all"
+                  className="w-full text-xl sm:text-2xl py-4 px-5 bg-[#0F0D18] border border-[#2B233F] rounded-xl text-white placeholder-[#685F7A] focus:outline-none focus:border-[#8B5CF6] focus:ring-2 focus:ring-[#8B5CF6]/30 shadow-inner transition-all"
                 />
               </div>
             </div>
@@ -181,10 +181,10 @@ export const QuestionCard: React.FC<QuestionCardProps> = ({
           {questionNumber === 2 && (
             <div className="space-y-6">
               <div className="space-y-2">
-                <span className="text-[11px] uppercase tracking-[0.24em] font-semibold text-[#8C7436]">
+                <span className="text-[11px] uppercase tracking-[0.24em] font-semibold text-[#C084FC]">
                   Motivação Principal
                 </span>
-                <h3 className="font-['Cormorant_Garamond',serif] text-2xl sm:text-3xl md:text-4xl font-semibold tracking-tight text-[#111318]">
+                <h3 className="font-['Cormorant_Garamond',serif] text-2xl sm:text-3xl md:text-4xl font-semibold tracking-tight text-white">
                   O que fez você querer melhorar seu inglês agora?
                 </h3>
               </div>
@@ -207,13 +207,13 @@ export const QuestionCard: React.FC<QuestionCardProps> = ({
                       onClick={() => handleSelectOption('objetivo', option, option !== 'Outro')}
                       className={`w-full text-left p-4 sm:p-4.5 rounded-xl border transition-all flex items-center justify-between group ${
                         isSelected
-                          ? 'border-[#C5A059] bg-[#F7F2E7] shadow-sm'
-                          : 'border-[#E5DEC9] bg-white hover:border-[#C5A059]/60 hover:bg-[#FAF7F0]'
+                          ? 'border-[#8B5CF6] bg-[#1E1633] shadow-[0_0_20px_rgba(139,92,246,0.22)]'
+                          : 'border-[#241E34] bg-[#110F1D] hover:border-[#7C3AED]/60 hover:bg-[#161326]'
                       }`}
                     >
                       <span
                         className={`text-sm sm:text-base font-medium ${
-                          isSelected ? 'text-[#111318] font-semibold' : 'text-[#3D3830]'
+                          isSelected ? 'text-white font-semibold' : 'text-[#DDD6EA]'
                         }`}
                       >
                         {option}
@@ -221,8 +221,8 @@ export const QuestionCard: React.FC<QuestionCardProps> = ({
                       <div
                         className={`w-5 h-5 rounded-full border flex items-center justify-center transition-all ${
                           isSelected
-                            ? 'border-[#C5A059] bg-[#C5A059] text-white'
-                            : 'border-[#D9CFBA] group-hover:border-[#C5A059]'
+                            ? 'border-[#8B5CF6] bg-[#8B5CF6] text-white shadow-[0_0_8px_#A855F7]'
+                            : 'border-[#372E4C] group-hover:border-[#8B5CF6]'
                         }`}
                       >
                         {isSelected && <Check className="w-3 h-3 stroke-[3]" />}
@@ -240,7 +240,7 @@ export const QuestionCard: React.FC<QuestionCardProps> = ({
                       onChange={(e) => onChange('objetivoOutro', e.target.value)}
                       onKeyDown={handleKeyDown}
                       placeholder="Especifique brevemente seu objetivo"
-                      className="w-full text-base py-3 px-4 bg-white border border-[#DDD5C5] rounded-xl text-[#111318] placeholder-[#9E978C] focus:outline-none focus:border-[#C5A059] focus:ring-2 focus:ring-[#C5A059]/20"
+                      className="w-full text-base py-3 px-4 bg-[#0F0D18] border border-[#2B233F] rounded-xl text-white placeholder-[#685F7A] focus:outline-none focus:border-[#8B5CF6] focus:ring-2 focus:ring-[#8B5CF6]/30"
                     />
                   </div>
                 )}
@@ -252,14 +252,14 @@ export const QuestionCard: React.FC<QuestionCardProps> = ({
           {questionNumber === 3 && (
             <div className="space-y-6">
               <div className="space-y-2">
-                <div className="inline-flex items-center space-x-1.5 text-[11px] uppercase tracking-[0.24em] font-semibold text-[#8C7436]">
+                <div className="inline-flex items-center space-x-1.5 text-[11px] uppercase tracking-[0.24em] font-semibold text-[#C084FC]">
                   <Sparkles className="w-3.5 h-3.5" />
                   <span>Visão de Futuro</span>
                 </div>
-                <h3 className="font-['Cormorant_Garamond',serif] text-2xl sm:text-3xl md:text-4xl font-semibold tracking-tight text-[#111318] leading-snug">
+                <h3 className="font-['Cormorant_Garamond',serif] text-2xl sm:text-3xl md:text-4xl font-semibold tracking-tight text-white leading-snug">
                   Se você falasse inglês com segurança, o que isso poderia mudar na sua vida?
                 </h3>
-                <p className="text-xs sm:text-sm text-[#706B63] leading-relaxed">
+                <p className="text-xs sm:text-sm text-[#9E94B3] leading-relaxed">
                   Pense além de uma sala de aula: viagens, posições executivas, autonomia para negociar ou experiências com o mundo.
                 </p>
               </div>
@@ -272,9 +272,9 @@ export const QuestionCard: React.FC<QuestionCardProps> = ({
                   value={answers.transformacaoDesejada}
                   onChange={(e) => onChange('transformacaoDesejada', e.target.value)}
                   placeholder="Conte brevemente o que você gostaria de viver, conquistar ou desbloquear através do inglês…"
-                  className="w-full text-base sm:text-lg p-5 bg-white border border-[#DDD5C5] rounded-xl text-[#111318] placeholder-[#A8A196] focus:outline-none focus:border-[#C5A059] focus:ring-2 focus:ring-[#C5A059]/20 shadow-sm leading-relaxed transition-all resize-none"
+                  className="w-full text-base sm:text-lg p-5 bg-[#0F0D18] border border-[#2B233F] rounded-xl text-white placeholder-[#685F7A] focus:outline-none focus:border-[#8B5CF6] focus:ring-2 focus:ring-[#8B5CF6]/30 shadow-inner leading-relaxed transition-all resize-none"
                 />
-                <div className="flex justify-between items-center text-[11px] text-[#9E978C] px-1 mt-1.5">
+                <div className="flex justify-between items-center text-[11px] text-[#7E7495] px-1 mt-1.5">
                   <span>Essa resposta ajuda a calibrar sua experiência individual.</span>
                   <span>{answers.transformacaoDesejada.length} caracteres</span>
                 </div>
@@ -286,10 +286,10 @@ export const QuestionCard: React.FC<QuestionCardProps> = ({
           {questionNumber === 4 && (
             <div className="space-y-6">
               <div className="space-y-2">
-                <span className="text-[11px] uppercase tracking-[0.24em] font-semibold text-[#8C7436]">
+                <span className="text-[11px] uppercase tracking-[0.24em] font-semibold text-[#C084FC]">
                   Diagnóstico Atual
                 </span>
-                <h3 className="font-['Cormorant_Garamond',serif] text-2xl sm:text-3xl md:text-4xl font-semibold tracking-tight text-[#111318]">
+                <h3 className="font-['Cormorant_Garamond',serif] text-2xl sm:text-3xl md:text-4xl font-semibold tracking-tight text-white">
                   Como você se sente hoje com seu inglês?
                 </h3>
               </div>
@@ -310,13 +310,13 @@ export const QuestionCard: React.FC<QuestionCardProps> = ({
                       onClick={() => handleSelectOption('nivelPercebido', option)}
                       className={`w-full text-left p-4 rounded-xl border transition-all flex items-center justify-between group ${
                         isSelected
-                          ? 'border-[#C5A059] bg-[#F7F2E7] shadow-sm'
-                          : 'border-[#E5DEC9] bg-white hover:border-[#C5A059]/60 hover:bg-[#FAF7F0]'
+                          ? 'border-[#8B5CF6] bg-[#1E1633] shadow-[0_0_20px_rgba(139,92,246,0.22)]'
+                          : 'border-[#241E34] bg-[#110F1D] hover:border-[#7C3AED]/60 hover:bg-[#161326]'
                       }`}
                     >
                       <span
                         className={`text-sm sm:text-base font-medium ${
-                          isSelected ? 'text-[#111318] font-semibold' : 'text-[#3D3830]'
+                          isSelected ? 'text-white font-semibold' : 'text-[#DDD6EA]'
                         }`}
                       >
                         {option}
@@ -324,8 +324,8 @@ export const QuestionCard: React.FC<QuestionCardProps> = ({
                       <div
                         className={`w-5 h-5 rounded-full border flex items-center justify-center transition-all ${
                           isSelected
-                            ? 'border-[#C5A059] bg-[#C5A059] text-white'
-                            : 'border-[#D9CFBA] group-hover:border-[#C5A059]'
+                            ? 'border-[#8B5CF6] bg-[#8B5CF6] text-white shadow-[0_0_8px_#A855F7]'
+                            : 'border-[#372E4C] group-hover:border-[#8B5CF6]'
                         }`}
                       >
                         {isSelected && <Check className="w-3 h-3 stroke-[3]" />}
@@ -341,10 +341,10 @@ export const QuestionCard: React.FC<QuestionCardProps> = ({
           {questionNumber === 5 && (
             <div className="space-y-6">
               <div className="space-y-2">
-                <span className="text-[11px] uppercase tracking-[0.24em] font-semibold text-[#8C7436]">
+                <span className="text-[11px] uppercase tracking-[0.24em] font-semibold text-[#C084FC]">
                   Histórico
                 </span>
-                <h3 className="font-['Cormorant_Garamond',serif] text-2xl sm:text-3xl md:text-4xl font-semibold tracking-tight text-[#111318]">
+                <h3 className="font-['Cormorant_Garamond',serif] text-2xl sm:text-3xl md:text-4xl font-semibold tracking-tight text-white">
                   Há quanto tempo você estuda ou já estudou inglês?
                 </h3>
               </div>
@@ -365,13 +365,13 @@ export const QuestionCard: React.FC<QuestionCardProps> = ({
                       onClick={() => handleSelectOption('tempoEstudando', option)}
                       className={`w-full text-left p-4 rounded-xl border transition-all flex items-center justify-between group ${
                         isSelected
-                          ? 'border-[#C5A059] bg-[#F7F2E7] shadow-sm'
-                          : 'border-[#E5DEC9] bg-white hover:border-[#C5A059]/60 hover:bg-[#FAF7F0]'
+                          ? 'border-[#8B5CF6] bg-[#1E1633] shadow-[0_0_20px_rgba(139,92,246,0.22)]'
+                          : 'border-[#241E34] bg-[#110F1D] hover:border-[#7C3AED]/60 hover:bg-[#161326]'
                       }`}
                     >
                       <span
                         className={`text-sm sm:text-base font-medium ${
-                          isSelected ? 'text-[#111318] font-semibold' : 'text-[#3D3830]'
+                          isSelected ? 'text-white font-semibold' : 'text-[#DDD6EA]'
                         }`}
                       >
                         {option}
@@ -379,8 +379,8 @@ export const QuestionCard: React.FC<QuestionCardProps> = ({
                       <div
                         className={`w-5 h-5 rounded-full border flex items-center justify-center transition-all ${
                           isSelected
-                            ? 'border-[#C5A059] bg-[#C5A059] text-white'
-                            : 'border-[#D9CFBA] group-hover:border-[#C5A059]'
+                            ? 'border-[#8B5CF6] bg-[#8B5CF6] text-white shadow-[0_0_8px_#A855F7]'
+                            : 'border-[#372E4C] group-hover:border-[#8B5CF6]'
                         }`}
                       >
                         {isSelected && <Check className="w-3 h-3 stroke-[3]" />}
@@ -396,10 +396,10 @@ export const QuestionCard: React.FC<QuestionCardProps> = ({
           {questionNumber === 6 && (
             <div className="space-y-6">
               <div className="space-y-2">
-                <span className="text-[11px] uppercase tracking-[0.24em] font-semibold text-[#8C7436]">
+                <span className="text-[11px] uppercase tracking-[0.24em] font-semibold text-[#C084FC]">
                   Expectativa Temporal
                 </span>
-                <h3 className="font-['Cormorant_Garamond',serif] text-2xl sm:text-3xl md:text-4xl font-semibold tracking-tight text-[#111318]">
+                <h3 className="font-['Cormorant_Garamond',serif] text-2xl sm:text-3xl md:text-4xl font-semibold tracking-tight text-white">
                   Em quanto tempo você gostaria de sentir uma evolução real?
                 </h3>
               </div>
@@ -420,13 +420,13 @@ export const QuestionCard: React.FC<QuestionCardProps> = ({
                       onClick={() => handleSelectOption('prazoDesejado', option)}
                       className={`w-full text-left p-4 rounded-xl border transition-all flex items-center justify-between group ${
                         isSelected
-                          ? 'border-[#C5A059] bg-[#F7F2E7] shadow-sm'
-                          : 'border-[#E5DEC9] bg-white hover:border-[#C5A059]/60 hover:bg-[#FAF7F0]'
+                          ? 'border-[#8B5CF6] bg-[#1E1633] shadow-[0_0_20px_rgba(139,92,246,0.22)]'
+                          : 'border-[#241E34] bg-[#110F1D] hover:border-[#7C3AED]/60 hover:bg-[#161326]'
                       }`}
                     >
                       <span
                         className={`text-sm sm:text-base font-medium ${
-                          isSelected ? 'text-[#111318] font-semibold' : 'text-[#3D3830]'
+                          isSelected ? 'text-white font-semibold' : 'text-[#DDD6EA]'
                         }`}
                       >
                         {option}
@@ -434,8 +434,8 @@ export const QuestionCard: React.FC<QuestionCardProps> = ({
                       <div
                         className={`w-5 h-5 rounded-full border flex items-center justify-center transition-all ${
                           isSelected
-                            ? 'border-[#C5A059] bg-[#C5A059] text-white'
-                            : 'border-[#D9CFBA] group-hover:border-[#C5A059]'
+                            ? 'border-[#8B5CF6] bg-[#8B5CF6] text-white shadow-[0_0_8px_#A855F7]'
+                            : 'border-[#372E4C] group-hover:border-[#8B5CF6]'
                         }`}
                       >
                         {isSelected && <Check className="w-3 h-3 stroke-[3]" />}
@@ -451,10 +451,10 @@ export const QuestionCard: React.FC<QuestionCardProps> = ({
           {questionNumber === 7 && (
             <div className="space-y-6">
               <div className="space-y-2">
-                <span className="text-[11px] uppercase tracking-[0.24em] font-semibold text-[#8C7436]">
+                <span className="text-[11px] uppercase tracking-[0.24em] font-semibold text-[#C084FC]">
                   Rotina & Constância
                 </span>
-                <h3 className="font-['Cormorant_Garamond',serif] text-2xl sm:text-3xl md:text-4xl font-semibold tracking-tight text-[#111318]">
+                <h3 className="font-['Cormorant_Garamond',serif] text-2xl sm:text-3xl md:text-4xl font-semibold tracking-tight text-white">
                   Quanto tempo você consegue dedicar ao inglês por dia?
                 </h3>
               </div>
@@ -474,13 +474,13 @@ export const QuestionCard: React.FC<QuestionCardProps> = ({
                       onClick={() => handleSelectOption('tempoDiario', option)}
                       className={`w-full text-left p-4 rounded-xl border transition-all flex items-center justify-between group ${
                         isSelected
-                          ? 'border-[#C5A059] bg-[#F7F2E7] shadow-sm'
-                          : 'border-[#E5DEC9] bg-white hover:border-[#C5A059]/60 hover:bg-[#FAF7F0]'
+                          ? 'border-[#8B5CF6] bg-[#1E1633] shadow-[0_0_20px_rgba(139,92,246,0.22)]'
+                          : 'border-[#241E34] bg-[#110F1D] hover:border-[#7C3AED]/60 hover:bg-[#161326]'
                       }`}
                     >
                       <span
                         className={`text-sm sm:text-base font-medium ${
-                          isSelected ? 'text-[#111318] font-semibold' : 'text-[#3D3830]'
+                          isSelected ? 'text-white font-semibold' : 'text-[#DDD6EA]'
                         }`}
                       >
                         {option}
@@ -488,8 +488,8 @@ export const QuestionCard: React.FC<QuestionCardProps> = ({
                       <div
                         className={`w-5 h-5 rounded-full border flex items-center justify-center transition-all ${
                           isSelected
-                            ? 'border-[#C5A059] bg-[#C5A059] text-white'
-                            : 'border-[#D9CFBA] group-hover:border-[#C5A059]'
+                            ? 'border-[#8B5CF6] bg-[#8B5CF6] text-white shadow-[0_0_8px_#A855F7]'
+                            : 'border-[#372E4C] group-hover:border-[#8B5CF6]'
                         }`}
                       >
                         {isSelected && <Check className="w-3 h-3 stroke-[3]" />}
@@ -505,10 +505,10 @@ export const QuestionCard: React.FC<QuestionCardProps> = ({
           {questionNumber === 8 && (
             <div className="space-y-6">
               <div className="space-y-2">
-                <span className="text-[11px] uppercase tracking-[0.24em] font-semibold text-[#8C7436]">
+                <span className="text-[11px] uppercase tracking-[0.24em] font-semibold text-[#C084FC]">
                   Momento de Carreira
                 </span>
-                <h3 className="font-['Cormorant_Garamond',serif] text-2xl sm:text-3xl md:text-4xl font-semibold tracking-tight text-[#111318]">
+                <h3 className="font-['Cormorant_Garamond',serif] text-2xl sm:text-3xl md:text-4xl font-semibold tracking-tight text-white">
                   Como o inglês se conecta hoje com a sua vida profissional?
                 </h3>
               </div>
@@ -530,13 +530,13 @@ export const QuestionCard: React.FC<QuestionCardProps> = ({
                       onClick={() => onChange('situacaoProfissional', option)}
                       className={`w-full text-left p-3.5 sm:p-4 rounded-xl border transition-all flex items-center justify-between group ${
                         isSelected
-                          ? 'border-[#C5A059] bg-[#F7F2E7] shadow-sm'
-                          : 'border-[#E5DEC9] bg-white hover:border-[#C5A059]/60 hover:bg-[#FAF7F0]'
+                          ? 'border-[#8B5CF6] bg-[#1E1633] shadow-[0_0_20px_rgba(139,92,246,0.22)]'
+                          : 'border-[#241E34] bg-[#110F1D] hover:border-[#7C3AED]/60 hover:bg-[#161326]'
                       }`}
                     >
                       <span
                         className={`text-sm sm:text-base font-medium ${
-                          isSelected ? 'text-[#111318] font-semibold' : 'text-[#3D3830]'
+                          isSelected ? 'text-white font-semibold' : 'text-[#DDD6EA]'
                         }`}
                       >
                         {option}
@@ -544,8 +544,8 @@ export const QuestionCard: React.FC<QuestionCardProps> = ({
                       <div
                         className={`w-5 h-5 rounded-full border flex items-center justify-center transition-all ${
                           isSelected
-                            ? 'border-[#C5A059] bg-[#C5A059] text-white'
-                            : 'border-[#D9CFBA] group-hover:border-[#C5A059]'
+                            ? 'border-[#8B5CF6] bg-[#8B5CF6] text-white shadow-[0_0_8px_#A855F7]'
+                            : 'border-[#372E4C] group-hover:border-[#8B5CF6]'
                         }`}
                       >
                         {isSelected && <Check className="w-3 h-3 stroke-[3]" />}
@@ -556,8 +556,8 @@ export const QuestionCard: React.FC<QuestionCardProps> = ({
               </div>
 
               {/* Area de Atuacao */}
-              <div className="pt-2 border-t border-[#EAE4D6]">
-                <label className="block text-xs uppercase tracking-[0.18em] font-semibold text-[#5A544C] mb-2">
+              <div className="pt-2 border-t border-[#231C34]">
+                <label className="block text-xs uppercase tracking-[0.18em] font-semibold text-[#A89EB8] mb-2">
                   Qual é a sua área de atuação?
                 </label>
                 <input
@@ -567,7 +567,7 @@ export const QuestionCard: React.FC<QuestionCardProps> = ({
                   onChange={(e) => onChange('areaAtuacao', e.target.value)}
                   onKeyDown={handleKeyDown}
                   placeholder="Ex: Tecnologia, Finanças, Saúde, Gestão, Direito..."
-                  className="w-full text-base py-3 px-4 bg-white border border-[#DDD5C5] rounded-xl text-[#111318] placeholder-[#9E978C] focus:outline-none focus:border-[#C5A059] focus:ring-2 focus:ring-[#C5A059]/20"
+                  className="w-full text-base py-3 px-4 bg-[#0F0D18] border border-[#2B233F] rounded-xl text-white placeholder-[#685F7A] focus:outline-none focus:border-[#8B5CF6] focus:ring-2 focus:ring-[#8B5CF6]/30"
                 />
               </div>
             </div>
@@ -577,10 +577,10 @@ export const QuestionCard: React.FC<QuestionCardProps> = ({
           {questionNumber === 9 && (
             <div className="space-y-6">
               <div className="space-y-2">
-                <span className="text-[11px] uppercase tracking-[0.24em] font-semibold text-[#8C7436]">
+                <span className="text-[11px] uppercase tracking-[0.24em] font-semibold text-[#C084FC]">
                   Presença Global
                 </span>
-                <h3 className="font-['Cormorant_Garamond',serif] text-2xl sm:text-3xl md:text-4xl font-semibold tracking-tight text-[#111318]">
+                <h3 className="font-['Cormorant_Garamond',serif] text-2xl sm:text-3xl md:text-4xl font-semibold tracking-tight text-white">
                   Você pretende usar o inglês internacionalmente nos próximos 12 meses?
                 </h3>
               </div>
@@ -602,13 +602,13 @@ export const QuestionCard: React.FC<QuestionCardProps> = ({
                       onClick={() => handleSelectOption('intencaoInternacional', option)}
                       className={`w-full text-left p-4 rounded-xl border transition-all flex items-center justify-between group ${
                         isSelected
-                          ? 'border-[#C5A059] bg-[#F7F2E7] shadow-sm'
-                          : 'border-[#E5DEC9] bg-white hover:border-[#C5A059]/60 hover:bg-[#FAF7F0]'
+                          ? 'border-[#8B5CF6] bg-[#1E1633] shadow-[0_0_20px_rgba(139,92,246,0.22)]'
+                          : 'border-[#241E34] bg-[#110F1D] hover:border-[#7C3AED]/60 hover:bg-[#161326]'
                       }`}
                     >
                       <span
                         className={`text-sm sm:text-base font-medium ${
-                          isSelected ? 'text-[#111318] font-semibold' : 'text-[#3D3830]'
+                          isSelected ? 'text-white font-semibold' : 'text-[#DDD6EA]'
                         }`}
                       >
                         {option}
@@ -616,8 +616,8 @@ export const QuestionCard: React.FC<QuestionCardProps> = ({
                       <div
                         className={`w-5 h-5 rounded-full border flex items-center justify-center transition-all ${
                           isSelected
-                            ? 'border-[#C5A059] bg-[#C5A059] text-white'
-                            : 'border-[#D9CFBA] group-hover:border-[#C5A059]'
+                            ? 'border-[#8B5CF6] bg-[#8B5CF6] text-white shadow-[0_0_8px_#A855F7]'
+                            : 'border-[#372E4C] group-hover:border-[#8B5CF6]'
                         }`}
                       >
                         {isSelected && <Check className="w-3 h-3 stroke-[3]" />}
@@ -633,13 +633,13 @@ export const QuestionCard: React.FC<QuestionCardProps> = ({
           {questionNumber === 10 && (
             <div className="space-y-6">
               <div className="space-y-2">
-                <span className="text-[11px] uppercase tracking-[0.24em] font-semibold text-[#8C7436]">
+                <span className="text-[11px] uppercase tracking-[0.24em] font-semibold text-[#C084FC]">
                   Comunidade & Prática
                 </span>
-                <h3 className="font-['Cormorant_Garamond',serif] text-2xl sm:text-3xl md:text-4xl font-semibold tracking-tight text-[#111318]">
+                <h3 className="font-['Cormorant_Garamond',serif] text-2xl sm:text-3xl md:text-4xl font-semibold tracking-tight text-white">
                   Você teria alguém para estudar junto?
                 </h3>
-                <p className="text-xs sm:text-sm text-[#706B63]">
+                <p className="text-xs sm:text-sm text-[#9E94B3]">
                   Um amigo, colega de trabalho, cônjuge ou familiar que compartilha da mesma aspiração.
                 </p>
               </div>
@@ -659,13 +659,13 @@ export const QuestionCard: React.FC<QuestionCardProps> = ({
                       onClick={() => handleSelectOption('pessoasParaEstudarJunto', option)}
                       className={`w-full text-left p-4 rounded-xl border transition-all flex items-center justify-between group ${
                         isSelected
-                          ? 'border-[#C5A059] bg-[#F7F2E7] shadow-sm'
-                          : 'border-[#E5DEC9] bg-white hover:border-[#C5A059]/60 hover:bg-[#FAF7F0]'
+                          ? 'border-[#8B5CF6] bg-[#1E1633] shadow-[0_0_20px_rgba(139,92,246,0.22)]'
+                          : 'border-[#241E34] bg-[#110F1D] hover:border-[#7C3AED]/60 hover:bg-[#161326]'
                       }`}
                     >
                       <span
                         className={`text-sm sm:text-base font-medium ${
-                          isSelected ? 'text-[#111318] font-semibold' : 'text-[#3D3830]'
+                          isSelected ? 'text-white font-semibold' : 'text-[#DDD6EA]'
                         }`}
                       >
                         {option}
@@ -673,8 +673,8 @@ export const QuestionCard: React.FC<QuestionCardProps> = ({
                       <div
                         className={`w-5 h-5 rounded-full border flex items-center justify-center transition-all ${
                           isSelected
-                            ? 'border-[#C5A059] bg-[#C5A059] text-white'
-                            : 'border-[#D9CFBA] group-hover:border-[#C5A059]'
+                            ? 'border-[#8B5CF6] bg-[#8B5CF6] text-white shadow-[0_0_8px_#A855F7]'
+                            : 'border-[#372E4C] group-hover:border-[#8B5CF6]'
                         }`}
                       >
                         {isSelected && <Check className="w-3 h-3 stroke-[3]" />}
@@ -690,13 +690,13 @@ export const QuestionCard: React.FC<QuestionCardProps> = ({
           {questionNumber === 11 && (
             <div className="space-y-6">
               <div className="space-y-2">
-                <span className="text-[11px] uppercase tracking-[0.24em] font-semibold text-[#8C7436]">
+                <span className="text-[11px] uppercase tracking-[0.24em] font-semibold text-[#C084FC]">
                   Contato Oficial
                 </span>
-                <h3 className="font-['Cormorant_Garamond',serif] text-2xl sm:text-3xl md:text-4xl font-semibold tracking-tight text-[#111318]">
+                <h3 className="font-['Cormorant_Garamond',serif] text-2xl sm:text-3xl md:text-4xl font-semibold tracking-tight text-white">
                   Qual é o seu melhor e-mail?
                 </h3>
-                <p className="text-xs sm:text-sm text-[#706B63]">
+                <p className="text-xs sm:text-sm text-[#9E94B3]">
                   Para enviarmos seu registro institucional e síntese do seu diagnóstico.
                 </p>
               </div>
@@ -711,7 +711,7 @@ export const QuestionCard: React.FC<QuestionCardProps> = ({
                   onKeyDown={handleKeyDown}
                   placeholder="exemplo@dominio.com"
                   autoComplete="email"
-                  className="w-full text-lg sm:text-xl py-4 px-5 bg-white border border-[#DDD5C5] rounded-xl text-[#111318] placeholder-[#9E978C] focus:outline-none focus:border-[#C5A059] focus:ring-2 focus:ring-[#C5A059]/20 shadow-sm transition-all"
+                  className="w-full text-lg sm:text-xl py-4 px-5 bg-[#0F0D18] border border-[#2B233F] rounded-xl text-white placeholder-[#685F7A] focus:outline-none focus:border-[#8B5CF6] focus:ring-2 focus:ring-[#8B5CF6]/30 shadow-inner transition-all"
                 />
               </div>
             </div>
@@ -721,13 +721,13 @@ export const QuestionCard: React.FC<QuestionCardProps> = ({
           {questionNumber === 12 && (
             <div className="space-y-6">
               <div className="space-y-2">
-                <span className="text-[11px] uppercase tracking-[0.24em] font-semibold text-[#8C7436]">
+                <span className="text-[11px] uppercase tracking-[0.24em] font-semibold text-[#C084FC]">
                   Conexão Opcional
                 </span>
-                <h3 className="font-['Cormorant_Garamond',serif] text-2xl sm:text-3xl md:text-4xl font-semibold tracking-tight text-[#111318]">
+                <h3 className="font-['Cormorant_Garamond',serif] text-2xl sm:text-3xl md:text-4xl font-semibold tracking-tight text-white">
                   Qual é o seu Instagram?
                 </h3>
-                <p className="text-xs sm:text-sm text-[#706B63]">
+                <p className="text-xs sm:text-sm text-[#9E94B3]">
                   Opcional — ajuda nossa equipe a conhecer melhor seu momento.
                 </p>
               </div>
@@ -741,7 +741,7 @@ export const QuestionCard: React.FC<QuestionCardProps> = ({
                   onChange={(e) => onChange('instagram', e.target.value)}
                   onKeyDown={handleKeyDown}
                   placeholder="@seuinstagram"
-                  className="w-full text-lg sm:text-xl py-4 px-5 bg-white border border-[#DDD5C5] rounded-xl text-[#111318] placeholder-[#9E978C] focus:outline-none focus:border-[#C5A059] focus:ring-2 focus:ring-[#C5A059]/20 shadow-sm transition-all"
+                  className="w-full text-lg sm:text-xl py-4 px-5 bg-[#0F0D18] border border-[#2B233F] rounded-xl text-white placeholder-[#685F7A] focus:outline-none focus:border-[#8B5CF6] focus:ring-2 focus:ring-[#8B5CF6]/30 shadow-inner transition-all"
                 />
               </div>
             </div>
@@ -752,7 +752,7 @@ export const QuestionCard: React.FC<QuestionCardProps> = ({
             <motion.p
               initial={{ opacity: 0, y: -4 }}
               animate={{ opacity: 1, y: 0 }}
-              className="text-xs font-medium text-[#C0392B] bg-[#FDEDEC] p-3 rounded-lg border border-[#F5B7B1]"
+              className="text-xs font-medium text-[#FFA4B6] bg-[#2D0B18] p-3 rounded-lg border border-[#6E1C37]"
             >
               {error}
             </motion.p>
@@ -764,10 +764,10 @@ export const QuestionCard: React.FC<QuestionCardProps> = ({
               id="btn-question-continue"
               type="button"
               onClick={handleValidateAndNext}
-              className="group inline-flex items-center justify-center space-x-3 w-full sm:w-auto px-8 py-3.5 rounded-xl font-['Plus_Jakarta_Sans',sans-serif] text-xs sm:text-sm font-semibold tracking-[0.16em] uppercase text-white bg-gradient-to-b from-[#1C1F26] to-[#0A0C10] shadow-md hover:shadow-lg transition-all hover:scale-[1.01] active:scale-[0.99] cursor-pointer"
+              className="group inline-flex items-center justify-center space-x-3 w-full sm:w-auto px-8 py-3.5 rounded-xl font-['Plus_Jakarta_Sans',sans-serif] text-xs sm:text-sm font-semibold tracking-[0.16em] uppercase text-white bg-gradient-to-r from-[#6D28D9] via-[#7C3AED] to-[#8B5CF6] shadow-md shadow-[#7C3AED]/25 hover:shadow-lg hover:shadow-[#A855F7]/40 transition-all hover:scale-[1.015] active:scale-[0.99] border border-[#A78BFA]/30 cursor-pointer"
             >
               <span>{questionNumber === 12 ? 'FINALIZAR AVALIAÇÃO' : 'CONTINUAR'}</span>
-              <ArrowRight className="w-4 h-4 text-[#E0C38A] transition-transform duration-300 group-hover:translate-x-1" />
+              <ArrowRight className="w-4 h-4 text-white transition-transform duration-300 group-hover:translate-x-1" />
             </button>
           </div>
         </motion.div>

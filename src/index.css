@@ -3,8 +3,8 @@
 @layer base {
   body {
     font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-    color: #111318;
-    background-color: #FAF9F6;
+    color: #F5F3FA;
+    background-color: #07060A;
     overflow-x: hidden;
   }
 }
@@ -26,11 +26,27 @@
   font-family: 'Syne', -apple-system, BlinkMacSystemFont, sans-serif;
 }
 
-/* Subtle glow utilities */
-.glow-gold {
-  box-shadow: 0 0 25px -4px rgba(212, 175, 55, 0.25);
+.font-space {
+  font-family: 'Space Grotesk', -apple-system, BlinkMacSystemFont, sans-serif;
 }
 
-.glow-ambient {
-  box-shadow: 0 0 45px -8px rgba(224, 195, 138, 0.18);
+/* Purple and violet luminous glow utilities */
+.glow-purple {
+  box-shadow: 0 0 25px -3px rgba(139, 92, 246, 0.45);
+}
+
+.glow-purple-lg {
+  box-shadow: 0 0 45px -5px rgba(168, 85, 247, 0.55), 0 0 80px -10px rgba(124, 58, 237, 0.35);
+}
+
+.glow-ambient-dark {
+  box-shadow: 0 0 60px -10px rgba(139, 92, 246, 0.25);
+}
+
+/* 3D Liquid Organic Chrome Purple Lettering effect */
+.jumper-liquid-title {
+  background: linear-gradient(135deg, #FFFFFF 0%, #E9D5FF 22%, #C084FC 45%, #9333EA 72%, #6B21A8 95%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 4px 18px rgba(147, 51, 234, 0.6)) drop-shadow(0 0 28px rgba(192, 132, 252, 0.45));
 }

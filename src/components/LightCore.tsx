@@ -16,13 +16,13 @@ interface Particle {
   orbitRadius: number;
   angle: number;
   angularSpeed: number;
-  goldTone: string;
+  purpleTone: string;
 }
 
 export const LightCore: React.FC<LightCoreProps> = ({
   isExpanding = false,
   className = '',
-  size = 280,
+  size = 300,
 }) => {
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
   const mouseRef = useRef<{ x: number; y: number; targetX: number; targetY: number }>({
@@ -37,7 +37,7 @@ export const LightCore: React.FC<LightCoreProps> = ({
   useEffect(() => {
     if (isExpanding) {
       const startTime = performance.now();
-      const duration = 900; // ms
+      const duration = 850; // ms
 
       const updateExpansion = (now: number) => {
         const elapsed = now - startTime;
@@ -78,37 +78,37 @@ export const LightCore: React.FC<LightCoreProps> = ({
     resize();
     window.addEventListener('resize', resize);
 
-    // Generate subtle particles
-    const particleCount = 42;
+    // JUMPER Electric Purple / Luminous Lilac / Deep Violet palette
+    const particleCount = 48;
     const particles: Particle[] = [];
-    const goldTones = [
-      'rgba(212, 175, 55, ',
-      'rgba(197, 160, 89, ',
-      'rgba(235, 215, 170, ',
-      'rgba(184, 151, 72, ',
-      'rgba(255, 255, 255, ',
+    const purpleTones = [
+      'rgba(168, 85, 247, ',   // neon purple
+      'rgba(192, 132, 252, ',  // luminous lilac
+      'rgba(139, 92, 246, ',   // electric violet
+      'rgba(233, 213, 255, ',  // soft lavender glow
+      'rgba(255, 255, 255, ',  // pure white spark
     ];
 
     for (let i = 0; i < particleCount; i++) {
-      const orbit = 30 + Math.random() * 95;
+      const orbit = 35 + Math.random() * 105;
       particles.push({
         x: 0,
         y: 0,
-        vx: (Math.random() - 0.5) * 0.2,
-        vy: (Math.random() - 0.5) * 0.2,
-        radius: 0.8 + Math.random() * 1.8,
-        baseAlpha: 0.25 + Math.random() * 0.65,
+        vx: (Math.random() - 0.5) * 0.25,
+        vy: (Math.random() - 0.5) * 0.25,
+        radius: 0.9 + Math.random() * 2.0,
+        baseAlpha: 0.3 + Math.random() * 0.7,
         orbitRadius: orbit,
         angle: Math.random() * Math.PI * 2,
-        angularSpeed: (Math.random() * 0.008 + 0.003) * (Math.random() > 0.5 ? 1 : -1),
-        goldTone: goldTones[Math.floor(Math.random() * goldTones.length)],
+        angularSpeed: (Math.random() * 0.009 + 0.003) * (Math.random() > 0.5 ? 1 : -1),
+        purpleTone: purpleTones[Math.floor(Math.random() * purpleTones.length)],
       });
     }
 
     let time = 0;
 
     const render = () => {
-      time += 0.02;
+      time += 0.022;
 
       // Mouse smooth interpolation
       mouseRef.current.x += (mouseRef.current.targetX - mouseRef.current.x) * 0.06;
@@ -119,109 +119,111 @@ export const LightCore: React.FC<LightCoreProps> = ({
       const centerX = width / 2 + mouseRef.current.x;
       const centerY = height / 2 + mouseRef.current.y;
 
-      // Pulse calculations
-      const pulse = Math.sin(time * 1.5) * 0.06 + 1;
-      const baseRadius = (size * 0.22) * pulse;
-      const scaleMultiplier = 1 + expansionProgress * 6.5;
+      // Organic liquid pulse & breath
+      const pulse = Math.sin(time * 1.6) * 0.07 + 1;
+      const baseRadius = (size * 0.23) * pulse;
+      const scaleMultiplier = 1 + expansionProgress * 7.5;
       const currentRadius = baseRadius * scaleMultiplier;
 
-      // 1. Far Ambient Glow (Champagne / White / Gold Aura)
+      // 1. Far Ambient Glow (Deep Electric Violet & Ultraviolet Aura)
       const outerGlow = ctx.createRadialGradient(
         centerX,
         centerY,
         currentRadius * 0.1,
         centerX,
         centerY,
-        currentRadius * 2.8
+        currentRadius * 3.2
       );
-      outerGlow.addColorStop(0, `rgba(247, 237, 209, ${0.45 * (1 + expansionProgress * 1.2)})`);
-      outerGlow.addColorStop(0.35, `rgba(224, 195, 138, ${0.22 * (1 + expansionProgress)})`);
-      outerGlow.addColorStop(0.7, 'rgba(212, 175, 55, 0.08)');
-      outerGlow.addColorStop(1, 'rgba(250, 249, 246, 0)');
+      outerGlow.addColorStop(0, `rgba(168, 85, 247, ${0.55 * (1 + expansionProgress * 1.5)})`);
+      outerGlow.addColorStop(0.3, `rgba(124, 58, 237, ${0.35 * (1 + expansionProgress)})`);
+      outerGlow.addColorStop(0.65, 'rgba(88, 28, 135, 0.18)');
+      outerGlow.addColorStop(1, 'rgba(7, 6, 10, 0)');
 
       ctx.fillStyle = outerGlow;
       ctx.beginPath();
-      ctx.arc(centerX, centerY, currentRadius * 3, 0, Math.PI * 2);
+      ctx.arc(centerX, centerY, currentRadius * 3.2, 0, Math.PI * 2);
       ctx.fill();
 
-      // 2. Subtle Harmonic Light Rings (Orbital intelligence waves)
+      // 2. Subtle Harmonic Light Rings & Waves (Movement & Digital Distortion)
       const ringCount = 3;
       for (let r = 0; r < ringCount; r++) {
-        const ringTime = time * (0.8 + r * 0.2) + r * 2.1;
-        const ringRadius = currentRadius * (1.15 + r * 0.38 + Math.sin(ringTime) * 0.08);
-        const ringAlpha = Math.max(0, (0.28 - r * 0.07) * (1 - expansionProgress * 0.4));
+        const ringTime = time * (0.9 + r * 0.25) + r * 1.9;
+        const ringRadius = currentRadius * (1.18 + r * 0.36 + Math.sin(ringTime) * 0.09);
+        const ringAlpha = Math.max(0, (0.35 - r * 0.08) * (1 - expansionProgress * 0.3));
 
-        ctx.strokeStyle = `rgba(197, 160, 89, ${ringAlpha})`;
-        ctx.lineWidth = 1;
+        ctx.strokeStyle = `rgba(192, 132, 252, ${ringAlpha})`;
+        ctx.lineWidth = 1.2;
         ctx.beginPath();
         ctx.arc(centerX, centerY, ringRadius, 0, Math.PI * 2);
         ctx.stroke();
       }
 
-      // 3. Central Luminous Sphere (Pure light & energy core)
+      // 3. Central Liquid Luminous Sphere (Organic chromatic purple & pure energy)
       const coreGrad = ctx.createRadialGradient(
-        centerX - currentRadius * 0.2,
+        centerX - currentRadius * 0.22,
         centerY - currentRadius * 0.25,
-        currentRadius * 0.05,
+        currentRadius * 0.04,
         centerX,
         centerY,
         currentRadius
       );
       coreGrad.addColorStop(0, '#FFFFFF');
-      coreGrad.addColorStop(0.3, 'rgba(255, 253, 245, 0.98)');
-      coreGrad.addColorStop(0.65, 'rgba(235, 215, 170, 0.85)');
-      coreGrad.addColorStop(0.9, 'rgba(202, 168, 97, 0.7)');
-      coreGrad.addColorStop(1, 'rgba(180, 142, 60, 0.15)');
+      coreGrad.addColorStop(0.2, 'rgba(245, 235, 255, 0.98)');
+      coreGrad.addColorStop(0.48, 'rgba(192, 132, 252, 0.95)');
+      coreGrad.addColorStop(0.78, 'rgba(124, 58, 237, 0.88)');
+      coreGrad.addColorStop(0.96, 'rgba(76, 29, 149, 0.7)');
+      coreGrad.addColorStop(1, 'rgba(46, 16, 101, 0.2)');
 
       ctx.fillStyle = coreGrad;
       ctx.beginPath();
       ctx.arc(centerX, centerY, currentRadius, 0, Math.PI * 2);
       ctx.fill();
 
-      // 4. Energy highlights (subtle white hot crest)
+      // 4. Energy crest & liquid specular highlights
       const crestGrad = ctx.createRadialGradient(
-        centerX - currentRadius * 0.28,
+        centerX - currentRadius * 0.3,
         centerY - currentRadius * 0.32,
         0,
         centerX,
         centerY,
-        currentRadius * 0.7
+        currentRadius * 0.72
       );
-      crestGrad.addColorStop(0, 'rgba(255, 255, 255, 0.95)');
-      crestGrad.addColorStop(0.5, 'rgba(255, 255, 255, 0.4)');
+      crestGrad.addColorStop(0, 'rgba(255, 255, 255, 0.96)');
+      crestGrad.addColorStop(0.35, 'rgba(233, 213, 255, 0.6)');
+      crestGrad.addColorStop(0.8, 'rgba(192, 132, 252, 0.15)');
       crestGrad.addColorStop(1, 'rgba(255, 255, 255, 0)');
 
       ctx.fillStyle = crestGrad;
       ctx.beginPath();
-      ctx.arc(centerX, centerY, currentRadius * 0.7, 0, Math.PI * 2);
+      ctx.arc(centerX, centerY, currentRadius * 0.72, 0, Math.PI * 2);
       ctx.fill();
 
-      // 5. Floating Connection Particles
+      // 5. Floating Connection Particles & Threads
       particles.forEach((p) => {
         p.angle += p.angularSpeed;
-        const radiusNoise = Math.sin(time * 2 + p.orbitRadius) * 6;
+        const radiusNoise = Math.sin(time * 2.2 + p.orbitRadius) * 7;
         const effectiveOrbit = (p.orbitRadius + radiusNoise) * scaleMultiplier;
 
         p.x = centerX + Math.cos(p.angle) * effectiveOrbit;
         p.y = centerY + Math.sin(p.angle) * effectiveOrbit;
 
-        const flicker = Math.sin(time * 3 + p.angle * 4) * 0.25 + 0.75;
-        const alpha = p.baseAlpha * flicker * (1 - expansionProgress * 0.5);
+        const flicker = Math.sin(time * 3.2 + p.angle * 4) * 0.25 + 0.75;
+        const alpha = p.baseAlpha * flicker * (1 - expansionProgress * 0.4);
 
-        ctx.fillStyle = `${p.goldTone}${alpha})`;
+        ctx.fillStyle = `${p.purpleTone}${alpha})`;
         ctx.beginPath();
         ctx.arc(p.x, p.y, p.radius * (1 + expansionProgress * 0.5), 0, Math.PI * 2);
         ctx.fill();
 
-        // Delicate connecting threads between close particles
+        // Glowing connection lines between nearby particles
         particles.forEach((other) => {
           const dx = p.x - other.x;
           const dy = p.y - other.y;
           const distSq = dx * dx + dy * dy;
-          if (distSq < 1600 && distSq > 40) {
-            const lineAlpha = (1 - distSq / 1600) * 0.12 * (1 - expansionProgress);
-            ctx.strokeStyle = `rgba(202, 168, 97, ${lineAlpha})`;
-            ctx.lineWidth = 0.6;
+          if (distSq < 1900 && distSq > 50) {
+            const lineAlpha = (1 - distSq / 1900) * 0.18 * (1 - expansionProgress);
+            ctx.strokeStyle = `rgba(168, 85, 247, ${lineAlpha})`;
+            ctx.lineWidth = 0.7;
             ctx.beginPath();
             ctx.moveTo(p.x, p.y);
             ctx.lineTo(other.x, other.y);
@@ -245,9 +247,9 @@ export const LightCore: React.FC<LightCoreProps> = ({
     const rect = e.currentTarget.getBoundingClientRect();
     const relX = e.clientX - rect.left - rect.width / 2;
     const relY = e.clientY - rect.top - rect.height / 2;
-    // Subtle magnetic response (clamped to max 12px)
-    mouseRef.current.targetX = Math.max(-14, Math.min(14, relX * 0.08));
-    mouseRef.current.targetY = Math.max(-14, Math.min(14, relY * 0.08));
+    // Magnetic response clamped to 15px
+    mouseRef.current.targetX = Math.max(-15, Math.min(15, relX * 0.08));
+    mouseRef.current.targetY = Math.max(-15, Math.min(15, relY * 0.08));
   };
 
   const handlePointerLeave = () => {
@@ -257,7 +259,7 @@ export const LightCore: React.FC<LightCoreProps> = ({
 
   return (
     <div
-      id="lightning-light-core-wrapper"
+      id="jumper-light-core-wrapper"
       className={`relative flex items-center justify-center cursor-pointer select-none touch-none ${className}`}
       style={{ width: size, height: size }}
       onPointerMove={handlePointerMove}
@@ -265,20 +267,27 @@ export const LightCore: React.FC<LightCoreProps> = ({
     >
       <canvas
         ref={canvasRef}
-        id="lightning-light-core-canvas"
+        id="jumper-light-core-canvas"
         className="w-full h-full block"
         style={{
-          filter: 'drop-shadow(0 0 24px rgba(212, 175, 55, 0.22))',
+          filter: 'drop-shadow(0 0 35px rgba(147, 51, 234, 0.45))',
         }}
       />
-      {/* Cinematic White Flash Bloom when expanding */}
+      {/* Cinematic Violet/Lilac Flash Bloom when expanding */}
       {isExpanding && (
         <div
-          className="fixed inset-0 pointer-events-none z-50 bg-[#FAF9F6] transition-opacity duration-700 ease-out"
+          className="fixed inset-0 pointer-events-none z-50 bg-[#07060A] transition-opacity duration-750 ease-out"
           style={{
-            opacity: Math.pow(expansionProgress, 1.8),
+            opacity: Math.pow(expansionProgress, 1.6),
           }}
-        />
+        >
+          <div
+            className="absolute inset-0 bg-gradient-to-tr from-[#7C3AED]/40 via-[#A855F7]/30 to-transparent blur-2xl"
+            style={{
+              opacity: Math.pow(expansionProgress, 1.2),
+            }}
+          />
+        </div>
       )}
     </div>
   );

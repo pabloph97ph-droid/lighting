@@ -13,7 +13,7 @@ export function formatWhatsAppMessage(data: AssessmentAnswers): string {
 
   const areaAtuacao = data.areaAtuacao?.trim() || 'Não especificada';
 
-  const message = `Olá! Acabei de realizar a avaliação da Lightning.
+  const message = `Olá! Acabei de realizar a avaliação da Jumper.
 
 Meu nome é ${data.nome.trim()}.
 
